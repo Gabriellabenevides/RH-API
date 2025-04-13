@@ -4,11 +4,11 @@ using RH.MySQL.MySQL;
 
 namespace RH.MySQL.Repositories
 {
-    public class Repositoty<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly MySQLContext _context;
         private readonly DbSet<TEntity> _dbSet;
-        public Repositoty(MySQLContext context)
+        public Repository(MySQLContext context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();

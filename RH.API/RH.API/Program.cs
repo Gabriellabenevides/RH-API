@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using RH.API.Extensions.SwaggerConfigurations;
+using RH.Application.Handlers.CargoHandlers;
 using RH.MySQL.MySQL;
+using RH.Application;
+using RH.MySQL;
 
 namespace RH.API;
 public static class Program
@@ -9,10 +12,21 @@ public static class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        // Configuração de serviços
+        builder.Services
+            .AddSwaggerConfig(builder.Configuration)
+            .AddApplication(builder.Configuration)
+            .AddControllers();
+
+        builder.Services.AddRepository(builder.Configuration);
+
+
         var connectionString = builder.Configuration.GetConnectionString("RHConnection");
 
         builder.Services.AddDbContext<MySQLContext>(options =>
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+        builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(IncluirCargoHandler).Assembly));
 
         builder.Services.AddSwaggerConfig(builder.Configuration).AddControllers();
 
