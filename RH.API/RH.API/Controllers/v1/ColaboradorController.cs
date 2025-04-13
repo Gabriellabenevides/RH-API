@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RH.Domain.Commands;
-using RH.Domain.Shareds.Notifications;
-using RH.Domain.ViewModel;
 
 namespace RH.API.Controllers.v1;
 
