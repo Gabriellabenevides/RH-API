@@ -1,5 +1,4 @@
-﻿using System.Net;
-using MediatR;
+﻿using MediatR;
 using RH.Domain.Entities;
 using RH.Domain.Shareds.Notifications;
 using RH.Domain.ViewModel;

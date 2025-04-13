@@ -16,6 +16,8 @@ namespace RH.MySQL
             // Registra o repositório específico para IBeneficioColaboradorRepository
             services.AddScoped<ICargoRepository, CargoRepository>();
 
+            services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
+
             return services;
         }
     }
