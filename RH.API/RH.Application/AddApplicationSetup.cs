@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RH.Application.Service;
 using RH.MySQL;
 
 namespace RH.Application;
@@ -22,6 +23,10 @@ public static class AddApplicationSetup
     public static IServiceCollection AddApplication(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddRepository(configuration);
+
+        services.AddSingleton<RabbitMQService>();
+
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(AddApplicationSetup).Assembly));
 
         return services;
     }
