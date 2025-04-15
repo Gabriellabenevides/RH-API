@@ -18,7 +18,7 @@ namespace RH.Application.Service
                 Password = _password
             };
 
-            // Fix: Use the synchronous CreateConnection method instead of the non-existent CreateConnectionAsync
+            // Create a connection to the RabbitMQ server
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
 
