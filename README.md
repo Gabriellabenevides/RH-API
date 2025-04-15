@@ -41,6 +41,12 @@ Para aplicar as migrações, execute os seguintes comandos no terminal:
 Add-Migration (nome da migração)
 Update-Database
 
+---
+
+## Iniciando o Ambiente com Docker
+
+Antes de rodar o projeto, certifique-se de iniciar os serviços necessários utilizando o Docker. Execute o seguinte comando no terminal:
+docker-compose up -d
 
 ---
 
